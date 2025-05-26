@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 
 const client = new ApolloClient({
-  uri: 'https://flyby-router-demo.herokuapp.com/',
+  uri: 'https://stg-wisconsintechmonth-staging.kinsta.cloud/graphql/',
   cache: new InMemoryCache(),
 });
 
