@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   const GET_EVENTS = gql`
-    query MyEvents {
+    query WTMEvents {
       events {
         nodes {
           slug
