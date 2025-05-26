@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 
 const client = new ApolloClient({
-  uri: 'https://stg-wisconsintechmonth-staging.kinsta.cloud/graphql/',
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
