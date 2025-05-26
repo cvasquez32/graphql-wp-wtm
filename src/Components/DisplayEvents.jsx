@@ -5,8 +5,6 @@ import stripHtml from "../utils/utils";
 const DisplayEvents = ({ GET_EVENTS }) => {
   const { loading, error, data } = useQuery(GET_EVENTS);
 
-  console.log(data)
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
