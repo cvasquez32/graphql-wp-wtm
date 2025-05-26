@@ -1,16 +1,23 @@
-import { useState } from "react";
 import { gql } from "@apollo/client";
-import DisplayLocations from "./Components/DisplayLocations";
+import DisplayEvents from "./Components/DisplayEvents";
 import "./App.css";
 
 function App() {
-  const GET_LOCATIONS = gql`
-    query GetLocations {
-      locations {
-        id
-        name
-        description
-        photo
+  const GET_EVENTS = gql`
+    query MyEvents {
+      events {
+        nodes {
+          slug
+          title
+          id
+          databaseId
+          author {
+            node {
+              name
+            }
+          }
+          content
+        }
       }
     }
   `;
@@ -18,7 +25,7 @@ function App() {
   return (
     <>
       <h1>GraphQL using WTM data</h1>
-      <DisplayLocations GET_LOCATIONS={GET_LOCATIONS} />
+      <DisplayEvents GET_EVENTS={GET_EVENTS} />
     </>
   );
 }
