@@ -17,6 +17,12 @@ function App() {
             }
           }
           content
+          featuredImage {
+            node {
+              file
+              sourceUrl
+            }
+          }
         }
       }
     }
