@@ -11,7 +11,7 @@ const DisplayEvents = ({ GET_EVENTS }) => {
   return (
     <div>
       {data.events.nodes.map(({ slug, title, content, featuredImage }, index) => (
-        <div key={index}>
+        <div key={index} style={{marginBottom: '15px'}}>
           <img src={`${featuredImage.node.sourceUrl}`} width={160} height={120}/>
           <h3>{title}</h3>
           <p>{stripHtml(content)}</p>
