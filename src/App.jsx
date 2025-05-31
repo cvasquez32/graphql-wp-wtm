@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import DisplayEvents from "./Components/DisplayEvents";
+import CreateEvent from "./Components/CreateEvents";
 import "./App.css";
 import { Routes, Route, Link, useLocation } from "react-router";
 
@@ -37,7 +38,10 @@ function App() {
 
       <nav>
         {location.pathname !== "/events" && (
-          <Link to="/events">View Events</Link>
+          <Link style={{marginRight: '10px'}} to="/events">View Events</Link>
+        )}
+        {location.pathname !== "/create-event" && (
+          <Link to="/create-event">Create Event</Link>
         )}
       </nav>
 
@@ -45,6 +49,10 @@ function App() {
         <Route
           path="/events"
           element={<DisplayEvents GET_EVENTS={GET_EVENTS} />}
+        />
+        <Route
+          path="/create-event"
+          element={<CreateEvent/>}
         />
         <Route path="/" element={<div>Welcome to the Home Page</div>} />
       </Routes>
