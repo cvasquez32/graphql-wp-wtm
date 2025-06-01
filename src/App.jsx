@@ -1,33 +1,7 @@
-import { gql } from "@apollo/client";
 import DisplayEvents from "./Components/DisplayEvents";
 import CreateEvent from "./Components/CreateEvents";
 import "./App.css";
 import { Routes, Route, Link, useLocation } from "react-router";
-
-const GET_EVENTS = gql`
-  query WTMEvents {
-    events {
-      nodes {
-        slug
-        title
-        id
-        databaseId
-        author {
-          node {
-            name
-          }
-        }
-        content
-        featuredImage {
-          node {
-            file
-            sourceUrl
-          }
-        }
-      }
-    }
-  }
-`;
 
 function App() {
   const location = useLocation();
@@ -48,7 +22,7 @@ function App() {
       <Routes>
         <Route
           path="/events"
-          element={<DisplayEvents GET_EVENTS={GET_EVENTS} />}
+          element={<DisplayEvents/>}
         />
         <Route
           path="/create-event"

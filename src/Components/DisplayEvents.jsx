@@ -1,9 +1,35 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 import stripHtml from "../utils/utils";
 import { Link } from "react-router";
 
-const DisplayEvents = ({ GET_EVENTS }) => {
+const GET_EVENTS = gql`
+  query WTMEvents {
+    events {
+      nodes {
+        slug
+        title
+        id
+        databaseId
+        author {
+          node {
+            name
+          }
+        }
+        content
+        featuredImage {
+          node {
+            file
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
+
+const DisplayEvents = () => {
   const { loading, error, data } = useQuery(GET_EVENTS);
 
   if (loading) return <p>Loading...</p>;
@@ -11,7 +37,7 @@ const DisplayEvents = ({ GET_EVENTS }) => {
 
   return (
     <div>
-      <nav>
+      <nav style={{marginBottom: "10px"}}>
         <Link to="/">Home</Link>
       </nav>
 
