@@ -19,21 +19,23 @@ const CREATE_EVENT = gql`
 const CreateEvent = () => {
   const [formState, setFormState] = useState({
     title: "",
+    slug: "",
     content: "",
     status: "",
     date: "",
-    clientMutationId: "3"
+    clientMutationId: "3",
   });
 
   const [createLink] = useMutation(CREATE_EVENT, {
     variables: {
       input: {
         title: formState.title,
+        slug: formState.slug,
         content: formState.content,
         status: formState.status,
         date: formState.date,
-        clientMutationId: "3"
-      }
+        clientMutationId: "3",
+      },
     },
   });
 
@@ -68,6 +70,18 @@ const CreateEvent = () => {
             }
             type="text"
             placeholder="Event Title"
+          />
+          <input
+            style={{ marginBottom: "10px", padding: "8px" }}
+            value={formState.slug}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                slug: e.target.value,
+              })
+            }
+            type="text"
+            placeholder="Event Slug"
           />
           <input
             style={{ marginBottom: "10px", padding: "8px" }}
