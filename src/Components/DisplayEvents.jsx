@@ -28,7 +28,6 @@ const GET_EVENTS = gql`
   }
 `;
 
-
 const DisplayEvents = () => {
   const { loading, error, data } = useQuery(GET_EVENTS);
 
@@ -36,11 +35,7 @@ const DisplayEvents = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <nav style={{marginBottom: "10px"}}>
-        <Link to="/">Home</Link>
-      </nav>
-
+    <div style={{marginTop: "10px"}}>
       {data.events.nodes.map(
         ({ slug, title, content, featuredImage }, index) => (
           <div key={index} style={{ marginBottom: "15px" }}>

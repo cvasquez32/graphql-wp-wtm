@@ -41,9 +41,6 @@ const CreateEvent = () => {
 
   return (
     <div>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
       <h2>Create Event</h2>
       <form
         onSubmit={(e) => {
