@@ -1,52 +1,22 @@
-import { gql } from "@apollo/client";
 import DisplayEvents from "./Components/DisplayEvents";
+import CreateEvent from "./Components/CreateEvents";
 import "./App.css";
 import { Routes, Route, Link, useLocation } from "react-router";
-
-const GET_EVENTS = gql`
-  query WTMEvents {
-    events {
-      nodes {
-        slug
-        title
-        id
-        databaseId
-        author {
-          node {
-            name
-          }
-        }
-        content
-        featuredImage {
-          node {
-            file
-            sourceUrl
-          }
-        }
-      }
-    }
-  }
-`;
+import Navbar from "./Components/Nav/Navbar";
 
 function App() {
-  const location = useLocation();
-
   return (
-    <div className="App">
-      <h1>GraphQL using WTM data</h1>
-
-      <nav>
-        {location.pathname !== "/events" && (
-          <Link to="/events">View Events</Link>
-        )}
-      </nav>
-
+    <div>
+      <Navbar />
       <Routes>
+        <Route path="/events" element={<DisplayEvents />} />
+        <Route path="/create-event" element={<CreateEvent />} />
         <Route
-          path="/events"
-          element={<DisplayEvents GET_EVENTS={GET_EVENTS} />}
+          path="/"
+          element={
+            <div style={{ marginTop: "10px" }}>Welcome to the Home Page</div>
+          }
         />
-        <Route path="/" element={<div>Welcome to the Home Page</div>} />
       </Routes>
     </div>
   );

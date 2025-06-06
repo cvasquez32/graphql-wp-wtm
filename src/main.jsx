@@ -4,8 +4,15 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+const username = import.meta.env.VITE_WP_NAME;
+const appPassword = import.meta.env.VITE_WP_PASSWORD;
+const token = btoa(`${username}:${appPassword}`)
+
 const client = new ApolloClient({
   uri: import.meta.env.VITE_GRAPHQL_ENDPOINT,
+  headers: {
+    Authorization: `Basic ${token}`,
+  },
   cache: new InMemoryCache(),
 });
 
